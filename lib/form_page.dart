@@ -80,13 +80,18 @@ class _FormPageState extends State<FormPage> {
           children: [
             TextFormField(
               controller: _name,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 labelText: "Full Name",
                 hintText: "Enter your name",
                 prefixIcon: Icon(Icons.person),
-                suffixIcon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    _name.clear();
+                  },
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                 ),
                 border: OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(
@@ -111,14 +116,19 @@ class _FormPageState extends State<FormPage> {
             TextFormField(
               controller: _phone,
               keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: "Phone Number",
                 hintText: "Enter your phone number",
                 helperText: "Phone Number Format 8(XXX)XXX-XXXX",
                 prefixIcon: Icon(Icons.phone),
-                suffixIcon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    _phone.clear();
+                  },
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                 ),
                 border: OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(
@@ -349,8 +359,14 @@ class _FormPageState extends State<FormPage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.green,
-          title: Text("Registration is succesful", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-          content: Text("$name you just registered", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          title: Text(
+            "Registration is succesful",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            "$name you just registered",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         );
       },
     );
